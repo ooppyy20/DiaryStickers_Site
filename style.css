@@ -12,7 +12,8 @@
 
 :root {
     --bg-white: #ffffff;
-    --bg-yellow: #fff4b0; /* 귀여운 파스텔 노란색 */
+    --bg-yellow: #fff4b0;
+    /* 귀여운 파스텔 노란색 */
     --accent: #ff9a9e;
     --text-color: #444;
 }
@@ -25,10 +26,11 @@ body {
 
     /* 깅엄 체크 패턴 구현 */
     background-color: var(--bg-white);
-    background-image: 
+    background-image:
         linear-gradient(90deg, rgba(255, 244, 176, .5) 50%, transparent 50%),
         linear-gradient(rgba(255, 244, 176, .5) 50%, transparent 50%);
-    background-size: 50px 50px; /* 체크 무늬 크기 조절 */
+    background-size: 50px 50px;
+    /* 체크 무늬 크기 조절 */
 }
 
 header {
@@ -39,32 +41,34 @@ header {
 .header-container {
     display: inline-block;
     background: white;
-    padding: 15px 30px; /* 안쪽 여백 넉넉히 */
+    padding: 15px 30px;
+    /* 안쪽 여백 넉넉히 */
     border-radius: 40px;
-    box-shadow: 0 4px 0px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
-    display: inline-block;
-    background: white;
-    padding: 5px 20px;
-    border-radius: 50px;
-    box-shadow: 0 4px 0px rgba(0,0,0,0.05);
+    margin: 0;
+    /* 기본 마진 제거 */
+    display: block;
+    font-size: 1.8rem;
 }
 
-/* 헤더 서명 스타일 */
 .artist-name {
-    margin-top: -30px; /* 제목과 가깝게 밀착 */
-    margin-bottom: 40px;
+    display: block;
+    /* 줄바꿈 */
+    margin-top: 5px;
     font-size: 0.9rem;
-    color: #888; /* 살짝 흐린 회색으로 세련되게 */
+    color: #888;
+    text-decoration: none;
+    /* 밑줄 제거 */
     letter-spacing: 1px;
+    transition: color 0.3s;
 }
 
-/* (선택사항) 헤더 서명에 마우스를 올리면 색이 변하는 효과 */
+/* 마우스 올렸을 때 효과 */
 .artist-name:hover {
     color: var(--accent);
-    transition: color 0.3s;
 }
 
 /* 메인 갤러리: 반응형 그리드 */
@@ -92,6 +96,10 @@ header h1 {
 
 .asset-card img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 이미지를 1:1 정사각형 비율로 고정 (원하는 비율로 조절 가능) */
+    object-fit: contain;
+    /* 이미지가 찌그러지지 않게 비율을 유지하며 영역을 꽉 채움 */
     border-radius: 10px;
 }
 
@@ -104,8 +112,10 @@ header h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* 너무 어둡지 않게 조절 */
-    backdrop-filter: blur(3px); /* 배경을 살짝 흐리게 해서 집중도 업! */
+    background: rgba(0, 0, 0, 0.5);
+    /* 너무 어둡지 않게 조절 */
+    backdrop-filter: blur(3px);
+    /* 배경을 살짝 흐리게 해서 집중도 업! */
     z-index: 100;
 }
 
@@ -118,17 +128,20 @@ header h1 {
 
 /* 모달 본체: 파스텔 노랑 */
 .modal-content {
-    background: #fffbe6; /* 따뜻하고 부드러운 파스텔 노랑 */
+    background: #fffbe6;
+    /* 따뜻하고 부드러운 파스텔 노랑 */
     width: 85%;
     max-width: 500px;
     margin: 10vh auto;
     padding: 30px 20px;
-    border-radius: 30px; /* 더 둥글게 */
-    border: 4px solid #fff; /* 흰색 두꺼운 테두리로 스티커 느낌 */
+    border-radius: 30px;
+    /* 더 둥글게 */
+    border: 4px solid #fff;
+    /* 흰색 두꺼운 테두리로 스티커 느낌 */
     position: relative;
     max-height: 75vh;
     overflow-y: auto;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 /* 닫기 버튼을 귀여운 동그라미로 */
@@ -146,8 +159,10 @@ header h1 {
     font-size: 24px;
     color: var(--accent);
     cursor: pointer;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
     transition: transform 0.1s;
+    border: none;
+    line-height: 1;
 }
 
 .close-btn:active {
@@ -164,7 +179,8 @@ header h1 {
 /* 개별 다운로드 아이템 카드 */
 .download-item {
     text-align: center;
-    background: white; /* 아이템은 흰색 배경으로 대비 */
+    background: white;
+    /* 아이템은 흰색 배경으로 대비 */
     padding: 15px;
     border-radius: 20px;
     border: 2px solid #f0ede0;
@@ -173,7 +189,11 @@ header h1 {
 
 .download-item img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 위와 동일하게 맞춰주면 깔끔해요 */
+    object-fit: contain;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .btn-download {
@@ -185,4 +205,37 @@ header h1 {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+}
+.btn-download:active {
+    transform: scale(0.95);
+}
+
+/* SNS 전용 모달 스타일 */
+.sns-content {
+    max-width: 300px;
+    /* 작고 귀엽게 크기 조절 */
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.sns-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-sns {
+    padding: 12px;
+    border-radius: 15px;
+    text-decoration: none;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-sns:active {
+    transform: scale(0.95);
 }

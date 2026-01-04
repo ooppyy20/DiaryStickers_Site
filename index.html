@@ -12,18 +12,29 @@
     <header>
         <div class="header-container">
             <h1>Digital Diary Assets</h1>
-            <a class="artist-name">By. Overcookmilk3d</a>
+            <a id="artist-link" class="artist-name" style="cursor: pointer;">By. Overcookmilk3d</a>
         </div>
     </header>
 
     <main id="gallery" class="gallery-grid">
     </main>
 
-    <div id="modal" class="modal">
+    <div id="asset-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" name="close-asset">&times;</span>
             <h2 id="modal-title">Asset Name</h2>
             <div id="modal-list" class="modal-grid"></div>
+        </div>
+    </div>
+
+    <div id="sns-modal" class="modal">
+        <div class="modal-content sns-content">
+            <span class="close-btn" name="close-sns">&times;</span>
+            <h3 style="margin-top: 0;">Follow Me!</h3>
+            <div class="sns-buttons">
+                <a href="https://x.com/Overcookmilk3d" target="_blank" class="btn-sns">X (Twitter)</a>
+                <a href="https://instagram.com/Overcookmilk3d" target="_blank" class="btn-sns">Instagram</a>
+            </div>
         </div>
     </div>
 

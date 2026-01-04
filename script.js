@@ -1,9 +1,16 @@
+// 1. 요소 선택
 const gallery = document.getElementById('gallery');
-const modal = document.getElementById('modal');
+const assetModal = document.getElementById('asset-modal'); // ID 수정 반영
+const snsModal = document.getElementById('sns-modal');
 const modalList = document.getElementById('modal-list');
 const modalTitle = document.getElementById('modal-title');
+const artistLink = document.getElementById('artist-link');
 
-// 1. 데이터 그룹화 (예: assets['coffee'] = ['coffee_1.png', 'coffee_2.png'...])
+// 닫기 버튼들
+const closeAssetBtn = document.querySelector('[name="close-asset"]');
+const closeSnsBtn = document.querySelector('[name="close-sns"]');
+
+// 2. 데이터 그룹화
 const assets = {};
 fileList.forEach(file => {
     const groupName = file.split('_')[0];
@@ -11,7 +18,7 @@ fileList.forEach(file => {
     assets[groupName].push(file);
 });
 
-// 2. 메인 갤러리 생성 (그룹별로 첫 번째 이미지만 보여줌)
+// 3. 메인 갤러리 생성
 Object.keys(assets).forEach(group => {
     const card = document.createElement('div');
     card.className = 'asset-card';
@@ -19,12 +26,12 @@ Object.keys(assets).forEach(group => {
         <img src="assets/${assets[group][0]}" alt="${group}">
         <p>${group}</p>
     `;
-    card.onclick = () => openModal(group);
+    card.onclick = () => openAssetModal(group);
     gallery.appendChild(card);
 });
 
-// 3. 모달 열기 (관련 에셋 나열 및 다운로드 버튼)
-function openModal(group) {
+// 4. 에셋 모달 열기
+function openAssetModal(group) {
     modalTitle.innerText = group;
     modalList.innerHTML = '';
     
@@ -38,9 +45,23 @@ function openModal(group) {
         modalList.appendChild(item);
     });
     
-    modal.style.display = 'block';
+    assetModal.style.display = 'block';
 }
 
-// 모달 닫기 로직
-document.querySelector('.close-btn').onclick = () => modal.style.display = 'none';
-window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; };
+// 5. 이벤트 리스너 (열기/닫기)
+
+// SNS 모달 열기
+artistLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    snsModal.style.display = 'block';
+});
+
+// 각각의 닫기 버튼 클릭
+closeAssetBtn.onclick = () => assetModal.style.display = 'none';
+closeSnsBtn.onclick = () => snsModal.style.display = 'none';
+
+// 배경 클릭 시 닫기
+window.onclick = (event) => {
+    if (event.target == assetModal) assetModal.style.display = 'none';
+    if (event.target == snsModal) snsModal.style.display = 'none';
+};
